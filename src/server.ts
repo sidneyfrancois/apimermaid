@@ -1,8 +1,15 @@
 import "reflect-metadata";
 import express from "express";
+import { AppDataSource } from "./database";
 
-const app = express();
+// Conexão com o banco de dados através do typeorm
 
-app.use(express.json());
+AppDataSource.initialize()
+  .then(() => {
+    const app = express();
 
-app.listen(3333, () => console.log("Mermaid API is running"));
+    app.use(express.json());
+
+    app.listen(3333, () => console.log("Mermaid API is running"));
+  })
+  .catch((error) => console.log("Database connection error: " + error));
