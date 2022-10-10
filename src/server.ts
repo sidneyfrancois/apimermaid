@@ -2,8 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import { AppDataSource } from "./database";
 import { routes } from "./routes";
-
-// Conexão com o banco de dados através do typeorm
+require("dotenv").config();
 
 AppDataSource.initialize()
   .then(() => {
@@ -12,6 +11,6 @@ AppDataSource.initialize()
     app.use(express.json());
     app.use(routes);
 
-    app.listen(3333, () => console.log("Mermaid API is running"));
+    app.listen(process.env.PORT, () => console.log("Mermaid API is running"));
   })
   .catch((error) => console.log("Database connection error: " + error));
