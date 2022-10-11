@@ -7,6 +7,7 @@
 - [x] Isolar dados em variáveis de ambiente
 - [x] Capacidade de enviar mensagens de SMS
 - [x] Capacidade de enviar mensagens via Whatsapp
+- [x] Configurar deploy no Heroku
 - [ ] Desacoplar repositório (Inverse Dependency)
 - [ ] Criação de usuário
 - [ ] Verificação de login de usuário (JWT)

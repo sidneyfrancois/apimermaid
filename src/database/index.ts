@@ -4,6 +4,17 @@ require("dotenv").config();
 
 const port = process.env.TYPEORM_PORT as unknown as number | undefined;
 
+let sslOption;
+
+process.env.NODE_ENV === "development"
+  ? (sslOption = null)
+  : (sslOption = {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    });
+
 const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.TYPEORM_HOST,
@@ -15,12 +26,7 @@ const AppDataSource = new DataSource({
   migrations: [
     `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
   ],
-  extra: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  extra: sslOption,
 });
 
 export { AppDataSource };
