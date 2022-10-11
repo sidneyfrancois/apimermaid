@@ -32,6 +32,8 @@ class CreateOrderService {
     const authToken = process.env.TWILIO_AUTH_TOKEN;
     const twilioNumber = process.env.TWILIO_PHONE_NUMBER;
     const myNumber = process.env.MY_NUMBER;
+    const myNumberWhatsapp = process.env.MY_NUMBER_WHATSAPP;
+    const twilioWhatsappNumber = process.env.TWILIO_WHATSAPP_NUMBER;
 
     const client = new Twilio(accountSid, authToken);
 
@@ -39,6 +41,15 @@ class CreateOrderService {
       .create({
         from: twilioNumber,
         to: myNumber,
+        body: `Olá, a sua compra foi confirmada!
+        valor total da compra: ${totalValue}`,
+      })
+      .then((message) => console.log(message.sid));
+
+    client.messages
+      .create({
+        from: twilioWhatsappNumber,
+        to: myNumberWhatsapp,
         body: `Olá, a sua compra foi confirmada!
         valor total da compra: ${totalValue}`,
       })
