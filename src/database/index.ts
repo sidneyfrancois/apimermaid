@@ -15,6 +15,12 @@ const AppDataSource = new DataSource({
   migrations: [
     `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
   ],
+  extra: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 export { AppDataSource };
