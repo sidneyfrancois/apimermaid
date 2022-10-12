@@ -33,7 +33,7 @@ class Order {
   address: Address;
 
   @Column()
-  adress_id: string;
+  address_id: string;
 
   @CreateDateColumn()
   created_at: Date;

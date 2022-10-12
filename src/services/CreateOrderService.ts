@@ -7,6 +7,7 @@ interface IOrderRequest {
   productName: string;
   unitPrice: number;
   quantity: number;
+  address_id: string;
 }
 
 class CreateOrderService {
@@ -14,6 +15,7 @@ class CreateOrderService {
     productName,
     unitPrice,
     quantity,
+    address_id,
   }: IOrderRequest): Promise<Order> {
     const repository = AppDataSource.getRepository(Order);
 
@@ -24,6 +26,7 @@ class CreateOrderService {
       unitPrice,
       quantity,
       totalValue,
+      address_id,
     });
 
     await repository.save(order);

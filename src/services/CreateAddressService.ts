@@ -16,6 +16,7 @@ class CreateAddressService {
     cidade,
     bairro,
     rua,
+    numero,
     cep,
   }: IRequestAddress): Promise<Address> {
     const repository = AppDataSource.getRepository(Address);
@@ -25,6 +26,7 @@ class CreateAddressService {
       cidade,
       bairro,
       rua,
+      numero,
       cep,
     });
 
