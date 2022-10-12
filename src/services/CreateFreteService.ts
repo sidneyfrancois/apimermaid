@@ -5,6 +5,7 @@ interface IFreteRequest {
   formaEnvio: string;
   precoEnvio: number;
   observacoes: string;
+  address_id: string;
 }
 
 class CreateFreteService {
@@ -12,6 +13,7 @@ class CreateFreteService {
     formaEnvio,
     precoEnvio,
     observacoes,
+    address_id,
   }: IFreteRequest): Promise<Frete> {
     const repository = AppDataSource.getRepository(Frete);
 
@@ -19,6 +21,7 @@ class CreateFreteService {
       formaEnvio,
       precoEnvio,
       observacoes,
+      address_id,
     });
 
     await repository.save(frete);

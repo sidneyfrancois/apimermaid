@@ -27,6 +27,9 @@ class Frete {
   @JoinColumn({ name: "address_id" })
   address: Address;
 
+  @Column()
+  address_id: string;
+
   @CreateDateColumn()
   created_at: Date;
 
