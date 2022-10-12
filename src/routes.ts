@@ -20,6 +20,6 @@ routes.post("/auth", new AuthenticateUserController().handle);
 
 routes.post("/address", new CreateAddressController().handle);
 
-routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
+routes.post("/frete", new CreateFreteController().handle);
 
 export { routes };
