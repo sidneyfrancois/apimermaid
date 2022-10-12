@@ -6,6 +6,7 @@ import { CreateOrderController } from "./controllers/CreateOrderController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
+import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 const routes = Router();
 
@@ -19,6 +20,6 @@ routes.post("/auth", new AuthenticateUserController().handle);
 
 routes.post("/address", new CreateAddressController().handle);
 
-routes.post("/frete", new CreateFreteController().handle);
+routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 
 export { routes };
