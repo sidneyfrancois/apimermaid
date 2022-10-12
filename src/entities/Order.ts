@@ -1,5 +1,15 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Address } from "./Address";
 
 @Entity("orders")
 class Order {
@@ -17,6 +27,13 @@ class Order {
 
   @Column({ name: "total_value" })
   totalValue: number;
+
+  @ManyToOne(() => Address)
+  @JoinColumn({ name: "address_id" })
+  address: Address;
+
+  @Column()
+  adress_id: string;
 
   @CreateDateColumn()
   created_at: Date;

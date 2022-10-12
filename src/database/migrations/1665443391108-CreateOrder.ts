@@ -24,6 +24,11 @@ export class CreateOrder1665443391108 implements MigrationInterface {
             type: "numeric",
           },
           {
+            name: "address_id",
+            type: "uuid",
+            isNullable: false,
+          },
+          {
             name: "total_value",
             type: "numeric",
           },
@@ -31,6 +36,16 @@ export class CreateOrder1665443391108 implements MigrationInterface {
             name: "created_at",
             type: "timestamp",
             default: "now()",
+          },
+        ],
+        foreignKeys: [
+          {
+            name: "FKAddress",
+            referencedTableName: "addresses",
+            referencedColumnNames: ["id"],
+            columnNames: ["address_id"],
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
           },
         ],
       })

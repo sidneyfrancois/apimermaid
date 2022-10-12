@@ -10,6 +10,7 @@
 - [x] Configurar deploy no Heroku
 - [ ] Desacoplar Twilio (Inverse Dependency)
 - [ ] Desacoplar repositório (Inverse Dependency)
+- [ ] Implementação de erros personalizados (impedir crash da aplicação)
 - [ ] Criação de usuário
 - [ ] Criação de endereço (Entidade)
 - [ ] Criação da relação entre usuário e endereço (OneToOne)
