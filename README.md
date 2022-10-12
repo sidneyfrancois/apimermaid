@@ -15,7 +15,7 @@
 - [x] Criação de endereço (Entidade)
 - [x] Criação da relação entre usuário e endereço
 - [x] Verificação de login de usuário (JWT)
-- [ ] Relacionamento de ordem de compra com usuário (ManyToOne)
+- [x] Relacionamento de ordem de compra com usuário (ManyToOne)
 - [ ] Documentação de API no Swagger (principal rota)
 - [ ] Conexão com o front-end (React.js)
 - [x] Criação de dados de frete
