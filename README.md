@@ -11,12 +11,12 @@
 - [ ] Desacoplar Twilio (Inverse Dependency)
 - [ ] Desacoplar repositório (Inverse Dependency)
 - [ ] Implementação de erros personalizados (impedir crash da aplicação)
-- [ ] Criação de usuário
-- [ ] Criação de endereço (Entidade)
-- [ ] Criação da relação entre usuário e endereço (OneToOne)
+- [x] Criação de usuário
+- [x] Criação de endereço (Entidade)
+- [x] Criação da relação entre usuário e endereço
 - [ ] Verificação de login de usuário (JWT)
 - [ ] Relacionamento de ordem de compra com usuário (ManyToOne)
 - [ ] Documentação de API no Swagger (principal rota)
 - [ ] Conexão com o front-end (React.js)
-- [ ] Criação de dados de frete
-- [ ] Relacionamento de dados de frete com ordem de compra (OneToMany)
+- [x] Criação de dados de frete
+- [x] Relacionamento de dados de frete com ordem de compra
