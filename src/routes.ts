@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { CreateAddressController } from "./controllers/CreateAddressController";
+import { CreateFreteController } from "./controllers/CreateFreteController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
@@ -15,5 +16,7 @@ routes.get("/orders", new GetOrderController().handle);
 routes.post("/users", new CreateUserController().handle);
 
 routes.post("/address", new CreateAddressController().handle);
+
+routes.post("/frete", new CreateFreteController().handle);
 
 export { routes };
