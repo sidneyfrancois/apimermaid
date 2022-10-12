@@ -24,3 +24,5 @@ class Frete {
     }
   }
 }
+
+export { Frete };

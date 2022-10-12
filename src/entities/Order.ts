@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 import { Address } from "./Address";
+import { Frete } from "./Frete";
 
 @Entity("orders")
 class Order {
@@ -31,6 +32,13 @@ class Order {
   @ManyToOne(() => Address)
   @JoinColumn({ name: "address_id" })
   address: Address;
+
+  @ManyToOne(() => Frete)
+  @JoinColumn({ name: "frete_id" })
+  frete: Frete;
+
+  @Column()
+  frete_id: string;
 
   @Column()
   address_id: string;

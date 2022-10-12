@@ -8,6 +8,7 @@ class ListAllOrdersService {
     const orders = await repository.find({
       relations: {
         address: true,
+        frete: true,
       },
     });
 
