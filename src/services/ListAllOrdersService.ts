@@ -5,7 +5,11 @@ class ListAllOrdersService {
   async execute(): Promise<Order[]> {
     const repository = AppDataSource.getRepository(Order);
 
-    const orders = await repository.find();
+    const orders = await repository.find({
+      relations: {
+        address: true,
+      },
+    });
 
     return orders;
   }
