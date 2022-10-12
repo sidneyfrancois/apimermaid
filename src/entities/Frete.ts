@@ -6,11 +6,11 @@ class Frete {
   @PrimaryColumn()
   id: string;
 
-  @Column()
-  forma_envio: string;
+  @Column({ name: "forma_envio" })
+  formaEnvio: string;
 
-  @Column()
-  preco_envio: number;
+  @Column({ name: "preco_envio" })
+  precoEnvio: number;
 
   @Column()
   observacoes: string;
