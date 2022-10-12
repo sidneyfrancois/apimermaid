@@ -8,6 +8,7 @@ interface IRequestAddress {
   rua: string;
   numero: number;
   cep: string;
+  user_id: string;
 }
 
 class CreateAddressService {
@@ -18,6 +19,7 @@ class CreateAddressService {
     rua,
     numero,
     cep,
+    user_id,
   }: IRequestAddress): Promise<Address> {
     const repository = AppDataSource.getRepository(Address);
 
@@ -28,6 +30,7 @@ class CreateAddressService {
       rua,
       numero,
       cep,
+      user_id,
     });
 
     await repository.save(address);
