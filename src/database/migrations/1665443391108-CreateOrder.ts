@@ -34,6 +34,11 @@ export class CreateOrder1665443391108 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: "user_id",
+            type: "uuid",
+            isNullable: false,
+          },
+          {
             name: "total_value",
             type: "numeric",
           },
@@ -57,6 +62,14 @@ export class CreateOrder1665443391108 implements MigrationInterface {
             referencedTableName: "frete",
             referencedColumnNames: ["id"],
             columnNames: ["frete_id"],
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
+          },
+          {
+            name: "FKUser",
+            referencedTableName: "users",
+            referencedColumnNames: ["id"],
+            columnNames: ["user_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },

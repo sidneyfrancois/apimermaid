@@ -11,6 +11,7 @@ import {
 import { v4 as uuidV4 } from "uuid";
 import { Address } from "./Address";
 import { Frete } from "./Frete";
+import { User } from "./User";
 
 @Entity("orders")
 class Order {
@@ -36,6 +37,10 @@ class Order {
   @ManyToOne(() => Frete)
   @JoinColumn({ name: "frete_id" })
   frete: Frete;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id" })
+  user: User;
 
   @Column()
   frete_id: string;

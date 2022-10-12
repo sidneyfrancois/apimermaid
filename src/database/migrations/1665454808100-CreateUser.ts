@@ -24,6 +24,10 @@ export class CreateUser1665454808100 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "order_id",
+            type: "uuid",
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",
