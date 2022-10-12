@@ -7,7 +7,7 @@ class GetOrderService {
 
     const order = await repository.findOne({
       where: { id: id },
-      relations: { address: true, frete: true },
+      relations: { address: true, frete: true, user: true },
     });
 
     return order;

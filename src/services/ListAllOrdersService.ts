@@ -9,6 +9,7 @@ class ListAllOrdersService {
       relations: {
         address: true,
         frete: true,
+        user: true,
       },
     });
 
