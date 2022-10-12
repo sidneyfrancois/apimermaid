@@ -1,5 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Address } from "./Address";
 
 @Entity("frete")
 class Frete {
@@ -14,6 +22,10 @@ class Frete {
 
   @Column()
   observacoes: string;
+
+  @ManyToOne(() => Address)
+  @JoinColumn({ name: "address_id" })
+  address: Address;
 
   @CreateDateColumn()
   created_at: Date;

@@ -24,9 +24,24 @@ export class CreateShipping1665599604367 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "address_id",
+            type: "uuid",
+            isNullable: false,
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",
+          },
+        ],
+        foreignKeys: [
+          {
+            name: "FKAddress",
+            referencedTableName: "addresses",
+            referencedColumnNames: ["id"],
+            columnNames: ["address_id"],
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
           },
         ],
       })

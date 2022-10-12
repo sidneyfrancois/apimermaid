@@ -25,7 +25,7 @@ const AppDataSource = new DataSource({
   entities: [`${process.env.TYPEORM_ENTITIES}/entities/*.{ts,js}`],
   migrations: [
     // `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
-    `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1665443391108-CreateOrder.ts`,
+    `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1665454808100-CreateUser.ts`,
   ],
   extra: sslOption,
 });
