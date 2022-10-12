@@ -1,4 +1,4 @@
-import { Request } from "express";
+import { Request, Response } from "express";
 import { GetOrderService } from "../services/GetOrderService";
 
 class GetOrderController {
