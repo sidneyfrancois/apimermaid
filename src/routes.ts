@@ -11,12 +11,11 @@ const routes = Router();
 
 routes.get("/", new ListAllOrdersController().handle);
 
-routes.post("/user", new AuthenticateUserController().handle);
-
 routes.post("/orders", new CreateOrderController().handle);
 routes.get("/orders", new GetOrderController().handle);
 
 routes.post("/users", new CreateUserController().handle);
+routes.post("/auth", new AuthenticateUserController().handle);
 
 routes.post("/address", new CreateAddressController().handle);
 
