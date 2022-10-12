@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
 import { CreateAddressController } from "./controllers/CreateAddressController";
 import { CreateFreteController } from "./controllers/CreateFreteController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
@@ -9,6 +10,8 @@ import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
 const routes = Router();
 
 routes.get("/", new ListAllOrdersController().handle);
+
+routes.post("/user", new AuthenticateUserController().handle);
 
 routes.post("/orders", new CreateOrderController().handle);
 routes.get("/orders", new GetOrderController().handle);
