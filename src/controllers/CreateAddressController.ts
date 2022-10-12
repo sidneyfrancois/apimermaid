@@ -3,7 +3,7 @@ import { CreateAddressService } from "../services/CreateAddressService";
 
 class CreateAddressController {
   async handle(request: Request, response: Response) {
-    const { estado, cidade, bairro, rua, numero, cep } = request.body;
+    const { estado, cidade, bairro, rua, numero, cep, user_id } = request.body;
 
     const service = new CreateAddressService();
     const result = await service.execute({
@@ -13,6 +13,7 @@ class CreateAddressController {
       rua,
       numero,
       cep,
+      user_id,
     });
 
     return response.json(result);

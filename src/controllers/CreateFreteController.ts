@@ -3,7 +3,7 @@ import { CreateFreteService } from "../services/CreateFreteService";
 
 class CreateFreteController {
   async handle(request: Request, response: Response) {
-    const { formaEnvio, precoEnvio, observacoes } = request.body;
+    const { formaEnvio, precoEnvio, observacoes, address_id } = request.body;
 
     const service = new CreateFreteService();
 
@@ -11,6 +11,7 @@ class CreateFreteController {
       formaEnvio,
       precoEnvio,
       observacoes,
+      address_id,
     });
 
     return response.json(result);
