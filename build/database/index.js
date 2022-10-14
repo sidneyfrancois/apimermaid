@@ -23,8 +23,8 @@ const AppDataSource = new typeorm_1.DataSource({
     database: process.env.TYPEORM_DATABASE,
     entities: [`${process.env.TYPEORM_ENTITIES}/entities/*.{ts,js}`],
     migrations: [
-        // `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
-        `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1665443391108-CreateOrder.ts`,
+        `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
+        // `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1665443391108-CreateOrder.ts`,
     ],
     extra: sslOption,
 });

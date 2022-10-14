@@ -12,14 +12,18 @@ const routes = Router();
 
 routes.get("/", new ListAllOrdersController().handle);
 
-routes.post("/orders", new CreateOrderController().handle);
+routes.post("/orders", ensureAuthenticated, new CreateOrderController().handle);
 routes.get("/orders", new GetOrderController().handle);
 
 routes.post("/users", new CreateUserController().handle);
 routes.post("/auth", new AuthenticateUserController().handle);
 
-routes.post("/address", new CreateAddressController().handle);
+routes.post(
+  "/address",
+  ensureAuthenticated,
+  new CreateAddressController().handle
+);
 
-routes.post("/frete", new CreateFreteController().handle);
+routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 
 export { routes };
