@@ -9,23 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrderController = void 0;
-const CreateOrderService_1 = require("../services/CreateOrderService");
-class CreateOrderController {
-    handle(request, response) {
+exports.GetOrderService = void 0;
+const database_1 = require("../database");
+const Order_1 = require("../entities/Order");
+class GetOrderService {
+    execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { productName, unitPrice, quantity, address_id, frete_id, user_id } = request.body;
-            const service = new CreateOrderService_1.CreateOrderService();
-            const result = yield service.execute({
-                productName,
-                unitPrice,
-                quantity,
-                address_id,
-                frete_id,
-                user_id,
+            const repository = database_1.AppDataSource.getRepository(Order_1.Order);
+            const order = yield repository.findOne({
+                where: { id: id },
+                relations: { address: true, frete: true, user: true },
             });
-            return response.json(result);
+            return order;
         });
     }
 }
-exports.CreateOrderController = CreateOrderController;
+exports.GetOrderService = GetOrderService;

@@ -16,7 +16,12 @@ class ListAllOrdersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const repository = database_1.AppDataSource.getRepository(Order_1.Order);
-            const orders = yield repository.find();
+            const orders = yield repository.find({
+                relations: {
+                    frete: { address: true },
+                    user: true,
+                },
+            });
             return orders;
         });
     }

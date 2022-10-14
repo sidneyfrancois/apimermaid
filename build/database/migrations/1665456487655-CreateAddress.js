@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrder1665443391108 = void 0;
+exports.CreateAddress1665456487655 = void 0;
 const typeorm_1 = require("typeorm");
-class CreateOrder1665443391108 {
+class CreateAddress1665456487655 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "orders",
+                name: "addresses",
                 columns: [
                     {
                         name: "id",
@@ -23,35 +23,33 @@ class CreateOrder1665443391108 {
                         isPrimary: true,
                     },
                     {
-                        name: "product_name",
+                        name: "estado",
                         type: "varchar",
                     },
                     {
-                        name: "unit_price",
+                        name: "cidade",
+                        type: "varchar",
+                    },
+                    {
+                        name: "bairro",
+                        type: "varchar",
+                    },
+                    {
+                        name: "rua",
+                        type: "varchar",
+                    },
+                    {
+                        name: "numero",
                         type: "numeric",
                     },
                     {
-                        name: "quantity",
-                        type: "numeric",
-                    },
-                    {
-                        name: "address_id",
-                        type: "uuid",
-                        isNullable: false,
-                    },
-                    {
-                        name: "frete_id",
-                        type: "uuid",
-                        isNullable: false,
+                        name: "cep",
+                        type: "varchar",
                     },
                     {
                         name: "user_id",
                         type: "uuid",
                         isNullable: false,
-                    },
-                    {
-                        name: "total_value",
-                        type: "numeric",
                     },
                     {
                         name: "created_at",
@@ -60,22 +58,6 @@ class CreateOrder1665443391108 {
                     },
                 ],
                 foreignKeys: [
-                    {
-                        name: "FKAddress",
-                        referencedTableName: "addresses",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["address_id"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    {
-                        name: "FKFrete",
-                        referencedTableName: "frete",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["frete_id"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
                     {
                         name: "FKUser",
                         referencedTableName: "users",
@@ -90,8 +72,8 @@ class CreateOrder1665443391108 {
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("orders");
+            yield queryRunner.dropTable("addresses");
         });
     }
 }
-exports.CreateOrder1665443391108 = CreateOrder1665443391108;
+exports.CreateAddress1665456487655 = CreateAddress1665456487655;

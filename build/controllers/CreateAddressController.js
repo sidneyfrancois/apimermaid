@@ -9,23 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrderController = void 0;
-const CreateOrderService_1 = require("../services/CreateOrderService");
-class CreateOrderController {
+exports.CreateAddressController = void 0;
+const CreateAddressService_1 = require("../services/CreateAddressService");
+class CreateAddressController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { productName, unitPrice, quantity, address_id, frete_id, user_id } = request.body;
-            const service = new CreateOrderService_1.CreateOrderService();
+            const { estado, cidade, bairro, rua, numero, cep, user_id } = request.body;
+            const service = new CreateAddressService_1.CreateAddressService();
             const result = yield service.execute({
-                productName,
-                unitPrice,
-                quantity,
-                address_id,
-                frete_id,
+                estado,
+                cidade,
+                bairro,
+                rua,
+                numero,
+                cep,
                 user_id,
             });
             return response.json(result);
         });
     }
 }
-exports.CreateOrderController = CreateOrderController;
+exports.CreateAddressController = CreateAddressController;

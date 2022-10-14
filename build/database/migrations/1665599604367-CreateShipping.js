@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrder1665443391108 = void 0;
+exports.CreateShipping1665599604367 = void 0;
 const typeorm_1 = require("typeorm");
-class CreateOrder1665443391108 {
+class CreateShipping1665599604367 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "orders",
+                name: "frete",
                 columns: [
                     {
                         name: "id",
@@ -23,35 +23,21 @@ class CreateOrder1665443391108 {
                         isPrimary: true,
                     },
                     {
-                        name: "product_name",
+                        name: "forma_envio",
                         type: "varchar",
                     },
                     {
-                        name: "unit_price",
+                        name: "preco_envio",
                         type: "numeric",
                     },
                     {
-                        name: "quantity",
-                        type: "numeric",
+                        name: "observacoes",
+                        type: "varchar",
                     },
                     {
                         name: "address_id",
                         type: "uuid",
                         isNullable: false,
-                    },
-                    {
-                        name: "frete_id",
-                        type: "uuid",
-                        isNullable: false,
-                    },
-                    {
-                        name: "user_id",
-                        type: "uuid",
-                        isNullable: false,
-                    },
-                    {
-                        name: "total_value",
-                        type: "numeric",
                     },
                     {
                         name: "created_at",
@@ -68,30 +54,14 @@ class CreateOrder1665443391108 {
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL",
                     },
-                    {
-                        name: "FKFrete",
-                        referencedTableName: "frete",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["frete_id"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    {
-                        name: "FKUser",
-                        referencedTableName: "users",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["user_id"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
                 ],
             }));
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("orders");
+            yield queryRunner.dropTable("frete");
         });
     }
 }
-exports.CreateOrder1665443391108 = CreateOrder1665443391108;
+exports.CreateShipping1665599604367 = CreateShipping1665599604367;

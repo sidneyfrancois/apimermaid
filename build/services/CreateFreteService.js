@@ -9,23 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrderController = void 0;
-const CreateOrderService_1 = require("../services/CreateOrderService");
-class CreateOrderController {
-    handle(request, response) {
+exports.CreateFreteService = void 0;
+const database_1 = require("../database");
+const Frete_1 = require("../entities/Frete");
+class CreateFreteService {
+    execute({ formaEnvio, precoEnvio, observacoes, address_id, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { productName, unitPrice, quantity, address_id, frete_id, user_id } = request.body;
-            const service = new CreateOrderService_1.CreateOrderService();
-            const result = yield service.execute({
-                productName,
-                unitPrice,
-                quantity,
+            const repository = database_1.AppDataSource.getRepository(Frete_1.Frete);
+            const frete = repository.create({
+                formaEnvio,
+                precoEnvio,
+                observacoes,
                 address_id,
-                frete_id,
-                user_id,
             });
-            return response.json(result);
+            yield repository.save(frete);
+            return frete;
         });
     }
 }
-exports.CreateOrderController = CreateOrderController;
+exports.CreateFreteService = CreateFreteService;

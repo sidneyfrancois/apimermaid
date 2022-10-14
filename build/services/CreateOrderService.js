@@ -15,7 +15,7 @@ const database_1 = require("../database");
 const twilio_1 = require("twilio");
 require("dotenv").config();
 class CreateOrderService {
-    execute({ productName, unitPrice, quantity, }) {
+    execute({ productName, unitPrice, quantity, address_id, frete_id, user_id, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const repository = database_1.AppDataSource.getRepository(Order_1.Order);
             const totalValue = unitPrice * quantity;
@@ -24,6 +24,9 @@ class CreateOrderService {
                 unitPrice,
                 quantity,
                 totalValue,
+                address_id,
+                frete_id,
+                user_id,
             });
             yield repository.save(order);
             const accountSid = process.env.TWILIO_ACCOUNT_SID;

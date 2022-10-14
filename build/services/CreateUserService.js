@@ -9,23 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateOrderController = void 0;
-const CreateOrderService_1 = require("../services/CreateOrderService");
-class CreateOrderController {
-    handle(request, response) {
+exports.CreateUserService = void 0;
+const database_1 = require("../database");
+const User_1 = require("../entities/User");
+const bcrypt_1 = require("bcrypt");
+class CreateUserService {
+    execute({ name, email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { productName, unitPrice, quantity, address_id, frete_id, user_id } = request.body;
-            const service = new CreateOrderService_1.CreateOrderService();
-            const result = yield service.execute({
-                productName,
-                unitPrice,
-                quantity,
-                address_id,
-                frete_id,
-                user_id,
+            const repository = database_1.AppDataSource.getRepository(User_1.User);
+            // Fazendo o hash do password a ser salvo no banco de dados
+            const passwordHash = yield (0, bcrypt_1.hash)(password, 8);
+            const user = repository.create({
+                name,
+                email,
+                password: passwordHash,
             });
-            return response.json(result);
+            yield repository.save(user);
+            return user;
         });
     }
 }
-exports.CreateOrderController = CreateOrderController;
+exports.CreateUserService = CreateUserService;

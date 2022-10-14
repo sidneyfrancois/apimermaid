@@ -9,13 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Order = void 0;
+exports.Address = void 0;
 const typeorm_1 = require("typeorm");
 const uuid_1 = require("uuid");
-const Address_1 = require("./Address");
-const Frete_1 = require("./Frete");
 const User_1 = require("./User");
-let Order = class Order {
+let Address = class Address {
     constructor() {
         if (!this.id) {
             this.id = (0, uuid_1.v4)();
@@ -25,56 +23,46 @@ let Order = class Order {
 __decorate([
     (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", String)
-], Order.prototype, "id", void 0);
+], Address.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "product_name" }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Order.prototype, "productName", void 0);
+], Address.prototype, "estado", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "unit_price" }),
-    __metadata("design:type", Number)
-], Order.prototype, "unitPrice", void 0);
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Address.prototype, "cidade", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Address.prototype, "bairro", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Address.prototype, "rua", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Order.prototype, "quantity", void 0);
+], Address.prototype, "numero", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "total_value" }),
-    __metadata("design:type", Number)
-], Order.prototype, "totalValue", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Address_1.Address),
-    (0, typeorm_1.JoinColumn)({ name: "address_id" }),
-    __metadata("design:type", Address_1.Address)
-], Order.prototype, "address", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Frete_1.Frete),
-    (0, typeorm_1.JoinColumn)({ name: "frete_id" }),
-    __metadata("design:type", Frete_1.Frete)
-], Order.prototype, "frete", void 0);
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Address.prototype, "cep", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => User_1.User),
     (0, typeorm_1.JoinColumn)({ name: "user_id" }),
     __metadata("design:type", User_1.User)
-], Order.prototype, "user", void 0);
+], Address.prototype, "user", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Order.prototype, "frete_id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Order.prototype, "address_id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Order.prototype, "user_id", void 0);
+], Address.prototype, "user_id", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Order.prototype, "created_at", void 0);
-Order = __decorate([
-    (0, typeorm_1.Entity)("orders"),
+], Address.prototype, "created_at", void 0);
+Address = __decorate([
+    (0, typeorm_1.Entity)("addresses"),
     __metadata("design:paramtypes", [])
-], Order);
-exports.Order = Order;
+], Address);
+exports.Address = Address;
