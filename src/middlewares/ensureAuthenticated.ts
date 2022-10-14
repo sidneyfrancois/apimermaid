@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { AppDataSource } from "../database";
 import { User } from "../entities/User";
+import { AppError } from "../error/AppError";
 
 interface IPayload {
   sub: string;
@@ -15,7 +16,7 @@ export async function ensureAuthenticated(
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new Error("Token missing, not authenticated!");
+    throw new AppError("Token missing, not authenticated!");
   }
 
   // Pegar token após a palavra Bearer
@@ -32,7 +33,7 @@ export async function ensureAuthenticated(
     const user = await repository.findOneBy({ id: user_id });
 
     if (!user) {
-      throw new Error("User does not exists!");
+      throw new AppError("User does not exists!");
     }
 
     request.user = {
@@ -41,6 +42,6 @@ export async function ensureAuthenticated(
 
     next();
   } catch {
-    throw new Error("Invalid Token");
+    throw new AppError("Invalid Token");
   }
 }

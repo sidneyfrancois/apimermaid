@@ -13,11 +13,12 @@ exports.ensureAuthenticated = void 0;
 const jsonwebtoken_1 = require("jsonwebtoken");
 const database_1 = require("../database");
 const User_1 = require("../entities/User");
+const AppError_1 = require("../error/AppError");
 function ensureAuthenticated(request, response, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const authHeader = request.headers.authorization;
         if (!authHeader) {
-            throw new Error("Token missing, not authenticated!");
+            throw new AppError_1.AppError("Token missing, not authenticated!");
         }
         // Pegar token após a palavra Bearer
         const [, token] = authHeader.split(" ");
@@ -26,7 +27,7 @@ function ensureAuthenticated(request, response, next) {
             const repository = database_1.AppDataSource.getRepository(User_1.User);
             const user = yield repository.findOneBy({ id: user_id });
             if (!user) {
-                throw new Error("User does not exists!");
+                throw new AppError_1.AppError("User does not exists!");
             }
             request.user = {
                 id: user_id,
@@ -34,7 +35,7 @@ function ensureAuthenticated(request, response, next) {
             next();
         }
         catch (_a) {
-            throw new Error("Invalid Token");
+            throw new AppError_1.AppError("Invalid Token");
         }
     });
 }

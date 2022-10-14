@@ -2,6 +2,7 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { AppDataSource } from "../database";
 import { User } from "../entities/User";
+import { AppError } from "../error/AppError";
 
 interface IRequestUser {
   email: string;
@@ -24,13 +25,13 @@ class AuthenticateUserService {
     const user = await repository.findOneBy({ email: email });
 
     if (!user) {
-      throw new Error("User or password incorrect!");
+      throw new AppError("User or password incorrect!");
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error("User or password incorrect");
+      throw new AppError("User or password incorrect");
     }
 
     const token = sign({}, "318450870ed5fa6e63092b8933f28bb8", {

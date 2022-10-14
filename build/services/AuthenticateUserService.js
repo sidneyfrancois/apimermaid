@@ -14,17 +14,18 @@ const bcrypt_1 = require("bcrypt");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const database_1 = require("../database");
 const User_1 = require("../entities/User");
+const AppError_1 = require("../error/AppError");
 class AuthenticateUserService {
     execute({ email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             const repository = database_1.AppDataSource.getRepository(User_1.User);
             const user = yield repository.findOneBy({ email: email });
             if (!user) {
-                throw new Error("User or password incorrect!");
+                throw new AppError_1.AppError("User or password incorrect!");
             }
             const passwordMatch = yield (0, bcrypt_1.compare)(password, user.password);
             if (!passwordMatch) {
-                throw new Error("User or password incorrect");
+                throw new AppError_1.AppError("User or password incorrect");
             }
             const token = (0, jsonwebtoken_1.sign)({}, "318450870ed5fa6e63092b8933f28bb8", {
                 subject: user.id,
