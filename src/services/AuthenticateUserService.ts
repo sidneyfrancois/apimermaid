@@ -12,6 +12,7 @@ interface IResponse {
   user: {
     name: string;
     email: string;
+    id: string;
   };
   token: string;
 }
@@ -42,6 +43,7 @@ class AuthenticateUserService {
       user: {
         name: user.name,
         email: user.email,
+        id: user.id,
       },
     };
 
