@@ -7,6 +7,7 @@ import { CreateProductController } from "./controllers/CreateProductController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
+import { ListAllProductsController } from "./controllers/ListAllProductController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 const routes = Router();
@@ -28,5 +29,6 @@ routes.post(
 routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 
 routes.post("/product", new CreateProductController().handle);
+routes.get("/product", new ListAllProductsController().handle);
 
 export { routes };
