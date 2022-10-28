@@ -1,5 +1,4 @@
 import { AppDataSource } from "../database";
-import { Frete } from "../entities/Frete";
 import { Product } from "../entities/Product";
 
 interface IProductRequest {
