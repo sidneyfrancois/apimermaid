@@ -3,6 +3,7 @@ import { AuthenticateUserController } from "./controllers/AuthenticateUserContro
 import { CreateAddressController } from "./controllers/CreateAddressController";
 import { CreateFreteController } from "./controllers/CreateFreteController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
+import { CreateProductController } from "./controllers/CreateProductController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
@@ -25,5 +26,7 @@ routes.post(
 );
 
 routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
+
+routes.post("/product", new CreateProductController().handle);
 
 export { routes };

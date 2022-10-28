@@ -16,3 +16,5 @@ class CreateProductController {
     return response.json(result);
   }
 }
+
+export { CreateProductController };
