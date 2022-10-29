@@ -1,5 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Product } from "./Product";
 
 @Entity("categories")
 class Category {
@@ -8,6 +15,9 @@ class Category {
 
   @Column()
   name: string;
+
+  @OneToMany(() => Product, (product) => product.category)
+  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;

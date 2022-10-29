@@ -6,6 +6,7 @@ import { CreateFreteController } from "./controllers/CreateFreteController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
 import { CreateProductController } from "./controllers/CreateProductController";
 import { CreateUserController } from "./controllers/CreateUserController";
+import { GetOneCategoryControler } from "./controllers/GetOneCategoryController";
 import { GetOrderController } from "./controllers/GetOrderController";
 import { GetProductController } from "./controllers/GetProductController";
 import { ListAllCategoriesControler } from "./controllers/ListAllCategoriesController";
@@ -37,5 +38,6 @@ routes.get("/product", new ListAllProductsController().handle);
 
 routes.post("/category", new CreateCategoryController().handle);
 routes.get("/category", new ListAllCategoriesControler().handle);
+routes.get("/category/detail", new GetOneCategoryControler().handle);
 
 export { routes };
