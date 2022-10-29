@@ -30,7 +30,7 @@ routes.post(
 routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 
 routes.post("/product", new CreateProductController().handle);
+routes.get("/product/detail", new GetProductController().handle);
 routes.get("/product", new ListAllProductsController().handle);
-routes.post("/product/:id", new GetProductController().handle);
 
 export { routes };

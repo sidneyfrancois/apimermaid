@@ -3,7 +3,7 @@ import { GetProductService } from "../services/GetProductService";
 
 class GetProductController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { id } = request.query;
 
     const service = new GetProductService();
     const result = await service.execute(id);
