@@ -6,6 +6,7 @@ import { CreateOrderController } from "./controllers/CreateOrderController";
 import { CreateProductController } from "./controllers/CreateProductController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
+import { GetProductController } from "./controllers/GetProductController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
 import { ListAllProductsController } from "./controllers/ListAllProductController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
@@ -30,5 +31,6 @@ routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 
 routes.post("/product", new CreateProductController().handle);
 routes.get("/product", new ListAllProductsController().handle);
+routes.post("/product/:id", new GetProductController().handle);
 
 export { routes };
