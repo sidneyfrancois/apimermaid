@@ -8,6 +8,7 @@ import { CreateProductController } from "./controllers/CreateProductController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { GetOrderController } from "./controllers/GetOrderController";
 import { GetProductController } from "./controllers/GetProductController";
+import { ListAllCategoriesControler } from "./controllers/ListAllCategoriesController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
 import { ListAllProductsController } from "./controllers/ListAllProductController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
@@ -35,5 +36,6 @@ routes.get("/product/detail", new GetProductController().handle);
 routes.get("/product", new ListAllProductsController().handle);
 
 routes.post("/category", new CreateCategoryController().handle);
+routes.get("/category", new ListAllCategoriesControler().handle);
 
 export { routes };
