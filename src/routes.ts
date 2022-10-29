@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
 import { CreateAddressController } from "./controllers/CreateAddressController";
+import { CreateCategoryController } from "./controllers/CreateCategoryController";
 import { CreateFreteController } from "./controllers/CreateFreteController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
 import { CreateProductController } from "./controllers/CreateProductController";
@@ -32,5 +33,7 @@ routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
 routes.post("/product", new CreateProductController().handle);
 routes.get("/product/detail", new GetProductController().handle);
 routes.get("/product", new ListAllProductsController().handle);
+
+routes.post("/category", new CreateCategoryController().handle);
 
 export { routes };
