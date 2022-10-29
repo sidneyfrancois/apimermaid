@@ -6,7 +6,7 @@ class GetProductController {
     const { id } = request.query;
 
     const service = new GetProductService();
-    const result = await service.execute(id);
+    const result = await service.execute(id.toString());
 
     return response.json(result);
   }
