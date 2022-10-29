@@ -7,6 +7,9 @@ class GetProductService {
 
     const product = await repository.findOne({
       where: { id: id },
+      relations: {
+        category: true,
+      },
     });
 
     return product;

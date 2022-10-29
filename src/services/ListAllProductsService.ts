@@ -5,7 +5,11 @@ class ListAllProductsService {
   async execute(): Promise<Product[]> {
     const repository = AppDataSource.getRepository(Product);
 
-    const orders = await repository.find();
+    const orders = await repository.find({
+      relations: {
+        category: true,
+      },
+    });
 
     return orders;
   }
