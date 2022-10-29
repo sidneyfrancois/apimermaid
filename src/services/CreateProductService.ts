@@ -5,6 +5,7 @@ interface IProductRequest {
   name: string;
   price: number;
   description: string;
+  category_id: string;
 }
 
 class CreateProductService {
@@ -12,6 +13,7 @@ class CreateProductService {
     name,
     price,
     description,
+    category_id,
   }: IProductRequest): Promise<Product> {
     const repository = AppDataSource.getRepository(Product);
 
@@ -19,6 +21,7 @@ class CreateProductService {
       name,
       price,
       description,
+      category_id,
     });
 
     await repository.save(product);
