@@ -7,7 +7,7 @@ import { AppDataSource } from "./database";
 import { AppError } from "./error/AppError";
 require("dotenv").config();
 
-const allowedOrigins = ["http://127.0.0.1:5173"];
+const allowedOrigins = ["https://master--lovely-youtiao-6b8306.netlify.app/"];
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
 };

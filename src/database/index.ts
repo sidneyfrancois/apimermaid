@@ -25,7 +25,8 @@ const AppDataSource = new DataSource({
   entities: [`${process.env.TYPEORM_ENTITIES}/entities/*.{ts,js}`],
   migrations: [
     // `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
-    `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1666991300134-CreateProduct.ts`,
+    // `${process.env.TYPEORM_MIGRATIONS}/database/migrations/1667046571921-CreateCategory.ts`,
+    `src/database/migrations/1666991300134-CreateProduct.ts`,
   ],
   extra: sslOption,
 });
