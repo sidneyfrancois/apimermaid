@@ -12,6 +12,7 @@ import { GetProductController } from "./controllers/GetProductController";
 import { ListAllCategoriesControler } from "./controllers/ListAllCategoriesController";
 import { ListAllOrdersController } from "./controllers/ListAllOrdersController";
 import { ListAllProductsController } from "./controllers/ListAllProductController";
+import { ListFretesController } from "./controllers/ListFretesController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 const routes = Router();
@@ -30,7 +31,8 @@ routes.post(
   new CreateAddressController().handle
 );
 
-routes.post("/frete", ensureAuthenticated, new CreateFreteController().handle);
+routes.post("/frete", new CreateFreteController().handle);
+routes.get("/frete", new ListFretesController().handle);
 
 routes.post("/product", new CreateProductController().handle);
 routes.get("/product/detail", new GetProductController().handle);
